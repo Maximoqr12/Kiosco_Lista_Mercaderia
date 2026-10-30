@@ -1,0 +1,30 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Registrar movimiento | Kiosco{% endblock %}
+
+{% block content %}
+
+<h2>Registrar movimiento de mercadería</h2>
+
+<p>
+    Desde aquí podés registrar ingresos de nueva mercadería
+    y ventas realizadas.
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Registrar movimiento
+    </button>
+
+    <a class="boton secundario"
+       href="{% url 'stocks:lista' %}">
+        Cancelar
+    </a>
+</form>
+
+{% endblock %}

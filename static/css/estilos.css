@@ -1,0 +1,236 @@
+
+/* ========================================
+   ESTILOS GENERALES
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #263238;
+}
+
+/* ========================================
+   ENCABEZADO
+======================================== */
+
+header {
+    background-color: #176b45;
+    color: white;
+    padding: 22px 8%;
+}
+
+.encabezado-kiosco {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.logo-kiosco {
+    display: block;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* ========================================
+   NAVEGACIÓN
+======================================== */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav span {
+    color: white;
+}
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+======================================== */
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #00000012;
+}
+
+h2 {
+    color: #176b45;
+}
+
+/* ========================================
+   BOTONES
+======================================== */
+
+a.boton,
+button {
+    display: inline-block;
+    background: #176b45;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+a.boton:hover,
+button:hover {
+    background: #105336;
+}
+
+a.secundario,
+button.secundario {
+    background: #64748b;
+}
+
+a.peligro,
+button.peligro {
+    background: #c0392b;
+}
+
+/* ========================================
+   FORMULARIOS
+======================================== */
+
+form {
+    margin: 15px 0;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font: inherit;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* Cierre de sesión */
+
+.form-logout {
+    margin: 0;
+}
+
+.form-logout button {
+    margin: 0;
+    width: auto;
+}
+
+/* ========================================
+   TABLAS
+======================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background: #e8f3ed;
+}
+
+/* ========================================
+   ACCIONES Y MENSAJES
+======================================== */
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mensaje-vacio {
+    color: #64748b;
+    padding: 15px 0;
+}
+
+/* ========================================
+   PIE DE PÁGINA
+======================================== */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+}
+
+/* ========================================
+   DISEÑO RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px 5%;
+    }
+
+    .encabezado-kiosco {
+        gap: 10px;
+    }
+
+    .logo-kiosco {
+        width: 55px;
+        height: 55px;
+    }
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    main {
+        width: 94%;
+        padding: 16px;
+        overflow-x: auto;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}

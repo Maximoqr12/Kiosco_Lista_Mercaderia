@@ -1,0 +1,102 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Stock | Kiosco{% endblock %}
+
+{% block content %}
+
+<h2>Control de stock</h2>
+
+{% if es_adulto_responsable %}
+<p>
+    <a class="boton" href="{% url 'stocks:crear' %}">
+        + Registrar stock
+    </a>
+
+    <a class="boton" href="{% url 'stocks:movimiento_crear' %}">
+        Registrar movimiento
+    </a>
+    
+    <a class="boton secundario"
+   href="{% url 'stocks:movimientos' %}">
+    Ver historial
+    </a>
+</p>
+{% endif %}
+
+{% if stocks %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Stock mínimo</th>
+            <th>Estado</th>
+            <th>Última actualización</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.producto.nombre }}</td>
+
+            <td>{{ stock.cantidad }}</td>
+
+            <td>{{ stock.stock_minimo }}</td>
+
+            <td>
+                {% if stock.cantidad <= stock.stock_minimo %}
+                    Stock bajo
+                {% else %}
+                    Disponible
+                {% endif %}
+            </td>
+
+            <td>
+                {{ stock.fecha_actualizacion|date:"d/m/Y H:i" }}
+            </td>
+
+            <td>
+                <div class="acciones">
+
+                    <a
+                        class="boton"
+                        href="{% url 'stocks:detalle' stock.pk %}">
+                        Ver
+                    </a>
+
+                    {% if es_adulto_responsable %}
+
+                    <a
+                        class="boton secundario"
+                        href="{% url 'stocks:editar' stock.pk %}">
+                        Editar
+                    </a>
+
+                    <a
+                        class="boton peligro"
+                        href="{% url 'stocks:eliminar' stock.pk %}">
+                        Eliminar
+                    </a>
+
+                    {% endif %}
+
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+
+<p class="mensaje-vacio">
+    Todavía no hay registros de stock.
+</p>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Detalle del retiro | Kiosco{% endblock %}
+
+{% block content %}
+<h2>Detalle del retiro</h2>
+
+<p><strong>Producto:</strong> {{ retiro.producto.nombre }}</p>
+<p><strong>Cantidad retirada:</strong> {{ retiro.cantidad }}</p>
+<p><strong>Motivo:</strong> {{ retiro.get_motivo_display }}</p>
+<p><strong>Fecha:</strong> {{ retiro.fecha_retiro|date:"d/m/Y H:i" }}</p>
+<p><strong>Observaciones:</strong>
+    {{ retiro.observaciones|default:"Sin observaciones" }}
+</p>
+
+<a class="boton secundario"
+   href="{% url 'mercaderia_retirada:lista' %}">
+    Volver al historial
+</a>
+{% endblock %}

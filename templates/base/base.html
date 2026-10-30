@@ -1,0 +1,97 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}Kiosco - Lista de Mercadería{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <script src="{% static 'js/app.js' %}" defer></script>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="encabezado-kiosco">
+
+            <img
+                src="{% static 'img/logo.png' %}"
+                alt="Logo del Kiosco"
+                class="logo-kiosco"
+            >
+
+            <h1>Kiosco Lista de Mercadería</h1>
+
+        </div>
+
+        <nav>
+
+            <a href="{% url 'productos:lista' %}">
+                Productos
+            </a>
+
+            <a href="{% url 'stocks:lista' %}">
+                Stock
+            </a>
+
+            <a href="{% url 'mercaderia_retirada:lista' %}">
+                Mercadería retirada
+            </a>
+
+            {% if user.is_superuser %}
+                <a href="/admin/">
+                    Administración
+                </a>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+
+                <span>
+                    Usuario: {{ user.username }}
+                </span>
+
+                <form
+                    method="post"
+                    action="{% url 'logout' %}"
+                    class="form-logout"
+                >
+                    {% csrf_token %}
+
+                    <button type="submit" class="secundario">
+                        Cerrar sesión
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <a href="{% url 'login' %}">
+                    Iniciar sesión
+                </a>
+
+            {% endif %}
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <footer>
+        Kiosco Lista de Mercadería
+    </footer>
+
+</body>
+</html>

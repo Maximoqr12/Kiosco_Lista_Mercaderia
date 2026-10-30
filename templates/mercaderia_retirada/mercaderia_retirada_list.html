@@ -1,0 +1,48 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Mercadería retirada | Kiosco{% endblock %}
+
+{% block content %}
+<h2>Historial de mercadería retirada</h2>
+
+<p>
+    <a class="boton" href="{% url 'mercaderia_retirada:crear' %}">
+        + Registrar retiro
+    </a>
+</p>
+
+{% if retiros %}
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Motivo</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for retiro in retiros %}
+        <tr>
+            <td>{{ retiro.producto.nombre }}</td>
+            <td>{{ retiro.cantidad }}</td>
+            <td>{{ retiro.get_motivo_display }}</td>
+            <td>{{ retiro.fecha_retiro|date:"d/m/Y H:i" }}</td>
+            <td>
+                <a class="boton"
+                   href="{% url 'mercaderia_retirada:detalle' retiro.pk %}">
+                    Ver
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="mensaje-vacio">
+    Todavía no hay registros de mercadería retirada.
+</p>
+{% endif %}
+{% endblock %}

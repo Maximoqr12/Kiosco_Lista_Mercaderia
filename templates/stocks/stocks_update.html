@@ -1,0 +1,16 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Editar stock | Kiosco{% endblock %}
+
+{% block content %}
+<h2>Actualizar stock</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Guardar cambios</button>
+    <a class="boton secundario" href="{% url 'stocks:detalle' stock.pk %}">Cancelar</a>
+</form>
+{% endblock %}

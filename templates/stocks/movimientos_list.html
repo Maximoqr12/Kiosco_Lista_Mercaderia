@@ -1,0 +1,69 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Historial de movimientos | Kiosco{% endblock %}
+
+{% block content %}
+
+<h2>Historial de movimientos</h2>
+
+<p>
+    Registro de ingresos, ventas, retiros y descartes
+    realizados en el kiosco.
+</p>
+
+{% if movimientos %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Tipo de movimiento</th>
+            <th>Cantidad</th>
+            <th>Observaciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for movimiento in movimientos %}
+        <tr>
+            <td>
+                {{ movimiento.fecha_movimiento|date:"d/m/Y H:i" }}
+            </td>
+
+            <td>
+                {{ movimiento.producto.nombre }}
+            </td>
+
+            <td>
+                {{ movimiento.get_tipo_display }}
+            </td>
+
+            <td>
+                {{ movimiento.cantidad }}
+            </td>
+
+            <td>
+                {{ movimiento.observaciones|default:"—" }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+
+<p class="mensaje-vacio">
+    Todavía no hay movimientos registrados.
+</p>
+
+{% endif %}
+
+<p>
+    <a class="boton secundario" href="{% url 'stocks:lista' %}">
+        Volver al stock
+    </a>
+</p>
+
+{% endblock %}

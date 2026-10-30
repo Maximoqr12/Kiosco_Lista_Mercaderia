@@ -1,0 +1,31 @@
+
+# Entorno virtual
+venv/
+.venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+
+# Base de datos local
+db.sqlite3
+
+# Variables y archivos privados
+.env
+.env.*
+
+# Archivos generados
+staticfiles/
+media/
+*.log
+
+# Configuración local del editor
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Claves privadas
+kiosco/secret_key.py

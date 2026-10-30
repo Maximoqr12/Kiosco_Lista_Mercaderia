@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Nuevo producto | Kiosco{% endblock %}
+
+{% block content %}
+<h2>Registrar producto</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Guardar producto</button>
+    <a class="boton secundario" href="{% url 'productos:lista' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Eliminar stock | Kiosco{% endblock %}
+
+{% block content %}
+<h2>Eliminar registro de stock</h2>
+
+<p>¿Seguro que querés eliminar el registro de stock de
+    <strong>{{ stock.producto.nombre }}</strong>?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a class="boton secundario" href="{% url 'stocks:detalle' stock.pk %}">Cancelar</a>
+</form>
+{% endblock %}

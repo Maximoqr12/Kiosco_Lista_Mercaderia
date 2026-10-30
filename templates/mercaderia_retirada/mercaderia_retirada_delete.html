@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Eliminar retiro | Kiosco{% endblock %}
+
+{% block content %}
+<h2>Eliminar registro de retiro</h2>
+
+<p>
+    ¿Seguro que querés eliminar el registro del producto
+    <strong>{{ object.producto.nombre }}</strong>,
+    por una cantidad de <strong>{{ object.cantidad }}</strong> unidades?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a class="boton secundario"
+       href="{% url 'mercaderia_retirada:detalle' object.pk %}">
+        Cancelar
+    </a>
+</form>
+{% endblock %}

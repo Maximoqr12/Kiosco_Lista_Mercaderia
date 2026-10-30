@@ -1,0 +1,23 @@
+
+{% extends 'base/base.html' %}
+
+{% block title %}Detalle de stock | Kiosco{% endblock %}
+
+{% block content %}
+<h2>Detalle de stock</h2>
+
+<p><strong>Producto:</strong> {{ stock.producto.nombre }}</p>
+<p><strong>Cantidad disponible:</strong> {{ stock.cantidad }}</p>
+<p><strong>Stock mínimo:</strong> {{ stock.stock_minimo }}</p>
+<p><strong>Última actualización:</strong> {{ stock.fecha_actualizacion|date:"d/m/Y H:i" }}</p>
+
+{% if stock.cantidad <= stock.stock_minimo %}
+<p><strong>Atención:</strong> el stock está en el mínimo o por debajo.</p>
+{% endif %}
+
+<div class="acciones">
+    <a class="boton" href="{% url 'stocks:editar' stock.pk %}">Editar</a>
+    <a class="boton peligro" href="{% url 'stocks:eliminar' stock.pk %}">Eliminar</a>
+    <a class="boton secundario" href="{% url 'stocks:lista' %}">Volver</a>
+</div>
+{% endblock %}
