@@ -112,3 +112,5 @@ Los archivos estáticos se organizan en la carpeta `static/`:
 Máximo Padilla y Alexis Romero.
 
 **Proyecto:** Kiosco Lista de Mercadería.
+
+Quien descargue el proyecto debe crear su propio kiosco/secret_key.py a partir de secret_key.example.py, generando una clave nueva. La clave privada nunca se sube.
